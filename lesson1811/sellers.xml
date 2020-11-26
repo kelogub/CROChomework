@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sellers>
+    <seller>
+        <id>1</id>
+        <last_name>Smith</last_name>
+        <first_name>Mary</first_name>
+    </seller>
+    <seller>
+        <id>2</id>
+        <last_name>Johnson</last_name>
+        <first_name>Patricia</first_name>
+    </seller>
+    <seller>
+        <id>3</id>
+        <last_name>Williams</last_name>
+        <first_name>Linda</first_name>
+    </seller>
+    <seller>
+        <id>4</id>
+        <last_name>Jones</last_name>
+        <first_name>Barbara</first_name>
+    </seller>
+    <seller>
+        <id>5</id>
+        <last_name>Brown</last_name>
+        <first_name>Elizabeth</first_name>
+    </seller>
+</sellers>

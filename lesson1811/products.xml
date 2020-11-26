@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products>
+    <product>
+        <id>1</id>
+        <name>скрепки</name>
+    </product>
+    <product>
+        <id>2</id>
+        <name>кнопки</name>
+    </product>
+    <product>
+        <id>3</id>
+        <name>ручка</name>
+    </product>
+    <product>
+        <id>4</id>
+        <name>карандаш</name>
+    </product>
+    <product>
+        <id>5</id>
+        <name>линейка</name>
+    </product>
+    <product>
+        <id>6</id>
+        <name>ластик</name>
+    </product>
+    <product>
+        <id>7</id>
+        <name>пенал</name>
+    </product>
+    <product>
+        <id>8</id>
+        <name>маркер</name>
+    </product>
+</products>
