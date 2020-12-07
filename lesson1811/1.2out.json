@@ -1,0 +1,25 @@
+[ {
+  "product" : "скрепки",
+  "amount" : 70
+}, {
+  "product" : "кнопки",
+  "amount" : 134
+}, {
+  "product" : "ручка",
+  "amount" : 217
+}, {
+  "product" : "карандаш",
+  "amount" : 103
+}, {
+  "product" : "линейка",
+  "amount" : 280
+}, {
+  "product" : "ластик",
+  "amount" : 63
+}, {
+  "product" : "пенал",
+  "amount" : 302
+}, {
+  "product" : "маркер",
+  "amount" : 320
+} ]

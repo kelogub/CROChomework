@@ -49,40 +49,34 @@ public class Main {
 
         //1. Для каждого товара вывести в файл общее количество проданных товаров этого типа
 
-        ObjectMapper objectMapper = new ObjectMapper();
         ArrayList<ProductAmount> ans1 = new ArrayList<>();
-        products.getProducts()
-                .forEach(product -> {
-                    //System.out.println("\"" + product.getName() + "\"" + " : " + sales.getSales().stream().filter(sale -> sale.getProduct_id() == product.getId()).mapToInt(Sale::getAmount).sum());
-                    ans1.add(new ProductAmount(product.getName(), sales.getSales().stream().filter(sale -> sale.getProduct_id() == product.getId()).mapToInt(Sale::getAmount).sum()));
-                });
 
+        var a1 = sales.getSales().stream()
+                .collect(Collectors.groupingBy(Sale::getProduct_id, Collectors.summingInt(Sale::getAmount)));
+
+        products.getProducts().forEach(product -> {
+            ans1.add(new ProductAmount(product.getName(), a1.get(product.getId())));
+        });
+
+        ObjectMapper objectMapper = new ObjectMapper();
         objectMapper
                 .writerWithDefaultPrettyPrinter()
-                .writeValue(new File("1out.json"), ans1);
+                .writeValue(new File("1.2out.json"), ans1);
 
         //2. Вывести в файл распределение общего количества продаж по датам
 
+        var a2 = sales.getSales().stream()
+                .collect(Collectors.groupingBy(Sale::getDate, Collectors.summingInt(Sale::getAmount)));
+
         ArrayList<DateAmount> ans2 = new ArrayList<>();
-        HashSet<LocalDate> dates = sales.getSales().stream().map(Sale::getDate).collect(Collectors.toCollection(HashSet::new));
+        LinkedHashSet<LocalDate> dates = sales.getSales().stream().map(Sale::getDate).sorted().collect(Collectors.toCollection(LinkedHashSet::new));
 
-        //можно собрать в многоуровневый стрим, но понятность пострадает.
+        dates.forEach(date->{
+            ans2.add(new DateAmount(date.format(russianFormat), a2.get(date)));
+        });
 
-        dates.stream()
-                .sorted()
-                .forEach(data -> {
-//                    System.out.println("\"" + data.format(russianFormat) + "\"" + " : " + sales.getSales().stream()
-//                            .filter(sale -> sale.getDate().equals(data))
-//                            .mapToInt(Sale::getAmount)
-//                            .sum()
-//                    );
-                    ans2.add(new DateAmount(data.format(russianFormat), sales.getSales().stream()
-                            .filter(sale -> sale.getDate().equals(data))
-                            .mapToInt(Sale::getAmount)
-                            .sum()));
-                });
         objectMapper
                 .writerWithDefaultPrettyPrinter()
-                .writeValue(new File("2out.json"), ans2);
+                .writeValue(new File("2.2out.json"), ans2);
     }
 }
